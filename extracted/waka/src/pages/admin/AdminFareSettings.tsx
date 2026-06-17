@@ -1,0 +1,1 @@
+export { AdminFareSettings } from './AdminPages'

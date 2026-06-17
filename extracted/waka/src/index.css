@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    -webkit-tap-highlight-color: transparent;
+    box-sizing: border-box;
+  }
+
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #0F172A;
+    color: #F8FAFC;
+    overscroll-behavior: none;
+    overflow-x: hidden;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #1E293B;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #475569;
+    border-radius: 2px;
+  }
+
+  /* Leaflet map dark override */
+  .leaflet-container {
+    background: #1a2744 !important;
+    font-family: 'Inter', sans-serif !important;
+  }
+
+  .leaflet-tile {
+    filter: brightness(0.8) saturate(0.6) hue-rotate(200deg);
+  }
+
+  .leaflet-control-zoom a {
+    background-color: #1E293B !important;
+    color: #F8FAFC !important;
+    border-color: #334155 !important;
+  }
+
+  .leaflet-control-attribution {
+    display: none !important;
+  }
+
+  /* Input height fix */
+  input {
+    height: auto;
+  }
+}
+
+@layer components {
+  .waka-card {
+    @apply bg-slate-800 rounded-2xl border border-slate-700;
+  }
+
+  .waka-input {
+    @apply w-full bg-slate-800 border border-slate-600 rounded-2xl px-4 py-3 text-white placeholder-slate-500 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 outline-none transition-all duration-200;
+  }
+
+  .waka-gradient-text {
+    @apply bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent;
+  }
+
+  .waka-gradient-btn {
+    @apply bg-gradient-to-r from-amber-500 to-orange-600;
+  }
+
+  /* Safe area for mobile bottom nav */
+  .pb-safe {
+    padding-bottom: calc(80px + env(safe-area-inset-bottom));
+  }
+
+  .bottom-nav-height {
+    height: calc(64px + env(safe-area-inset-bottom));
+  }
+}
+
+/* Framer Motion page transition */
+.page-enter {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 200ms, transform 200ms;
+}
+
+.page-exit {
+  opacity: 1;
+}
+
+.page-exit-active {
+  opacity: 0;
+  transition: opacity 150ms;
+}
